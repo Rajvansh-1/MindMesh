@@ -16,7 +16,8 @@ const loginSchema = z.object({
 })
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  adapter: PrismaAdapter(db),
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  adapter: PrismaAdapter(db) as any,
   session: { strategy: 'jwt' },
   pages: {
     signIn: '/login',
@@ -69,7 +70,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     // Enrich JWT with role and id
     async jwt({ token, user }) {
       if (user) {
-        token.id = user.id
+        token.id = user.id ?? token.sub ?? ''
         token.role = (user as { role?: string }).role ?? 'USER'
       }
       return token

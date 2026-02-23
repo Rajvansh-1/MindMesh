@@ -1,5 +1,5 @@
 // NextAuth v5 type augmentation
-// Extends the default Session and JWT types to include id and role
+// Extends Session and JWT to include id and role
 
 import type { DefaultSession, DefaultUser } from 'next-auth'
 import type { JWT as DefaultJWT } from 'next-auth/jwt'
@@ -13,7 +13,7 @@ declare module 'next-auth' {
   }
 
   interface User extends DefaultUser {
-    role: string
+    role?: string  // optional — @auth/prisma-adapter AdapterUser doesn't have role natively
   }
 }
 
