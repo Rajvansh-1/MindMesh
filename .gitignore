@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# Database (SQLite local file)
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+prisma/dev.db
+
+# Environment secrets — NEVER commit these
+.env.local
+.env.production
+
+# Prisma generated client (regenerated on install)
+prisma/generated/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
