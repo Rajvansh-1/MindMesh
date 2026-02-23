@@ -3,12 +3,12 @@
 
 import { auth } from '@/lib/auth'
 import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
+import type { NextAuthRequest } from 'next-auth'
 
 const PROTECTED = ['/dashboard', '/room']
 const ADMIN_ONLY = ['/admin']
 
-export default auth((req: NextRequest & { auth: ReturnType<typeof auth> extends Promise<infer T> ? T : never }) => {
+export default auth((req: NextAuthRequest) => {
   const { nextUrl } = req
   const session = req.auth
 
@@ -31,7 +31,10 @@ export default auth((req: NextRequest & { auth: ReturnType<typeof auth> extends 
   }
 
   // Logged-in user on auth pages → dashboard
-  if (isAuthenticated && (nextUrl.pathname === '/login' || nextUrl.pathname === '/register')) {
+  if (
+    isAuthenticated &&
+    (nextUrl.pathname === '/login' || nextUrl.pathname === '/register')
+  ) {
     return NextResponse.redirect(new URL('/dashboard', req.url))
   }
 

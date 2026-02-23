@@ -1,0 +1,51 @@
+﻿   Γû▓ Next.js 15.1.0
+   - Environments: .env.local, .env
+
+   Creating an optimized production build ...
+node.exe : <w> 
+[webpack.cache.PackFileCacheStrategy] 
+Serializing big strings (128kiB) 
+impacts deserialization performance 
+(consider using Buffer instead and 
+decode when needed)
+At C:\Program Files\nodejs\npx.ps1:29 
+char:3
++   & $NODE_EXE $NPX_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecif 
+   ied: (<w> [webpack.ca...de when nee  
+  ded):String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCom 
+   mandError
+ 
+ Γ£ô Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/8) ...
+   Generating static pages (2/8) 
+   Generating static pages (4/8) 
+   Generating static pages (6/8) 
+ Γ£ô Generating static pages (8/8)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                              Size     First Load JS
+Γöî Γùï /                                    175 B           110 kB
+Γö£ Γùï /_not-found                          986 B           107 kB
+Γö£ ╞Æ /admin                               1.68 kB         113 kB
+Γö£ ╞Æ /api/admin/ban                       142 B           106 kB
+Γö£ ╞Æ /api/auth/[...nextauth]              142 B           106 kB
+Γö£ Γùï /login                               2.29 kB         120 kB
+Γö£ Γùï /register                            1.91 kB         120 kB
+Γöö ╞Æ /room/[id]                           104 kB          226 kB
++ First Load JS shared by all            106 kB
+  Γö£ chunks/4bd1b696-5faaf04ccbaeda5d.js  53 kB
+  Γö£ chunks/517-6acccd72abe6d798.js       50.7 kB
+  Γöö other shared chunks (total)          2.57 kB
+
+
+╞Æ Middleware                             123 kB
+
+Γùï  (Static)   prerendered as static content
+╞Æ  (Dynamic)  server-rendered on demand
+
