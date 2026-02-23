@@ -1,18 +1,12 @@
 import { auth } from '@/lib/auth'
 import { db } from '@/lib/db'
 import { notFound, redirect } from 'next/navigation'
-import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
 import { GraphSkeleton } from '@/components/graph/GraphSkeleton'
+import { GraphCanvasLoader } from '@/components/graph/GraphCanvasLoader'
 import { RoomHeader } from '@/components/graph/RoomHeader'
 import { AnalysisPanel } from '@/components/analytics/AnalysisPanel'
 import { SimulationPanel } from '@/components/analytics/SimulationPanel'
-
-// Lazy-load heavy graph component
-const GraphCanvas = dynamic(() => import('@/components/graph/GraphCanvas').then(m => ({ default: m.GraphCanvas })), {
-  ssr: false,
-  loading: () => <GraphSkeleton />,
-})
 
 interface Props {
   params: Promise<{ id: string }>
@@ -57,7 +51,8 @@ export default async function RoomPage({ params, searchParams }: Props) {
       <div className="flex-1 overflow-hidden">
         {tab === 'graph' && (
           <Suspense fallback={<GraphSkeleton />}>
-            <GraphCanvas
+            {/* GraphCanvasLoader is a Client Component — safe to use ssr:false dynamic inside it */}
+            <GraphCanvasLoader
               roomId={id}
               initialNodes={nodes}
               initialEdges={edges}
